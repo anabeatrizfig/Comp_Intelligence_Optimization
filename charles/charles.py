@@ -87,7 +87,7 @@ class Population:
                 if len(new_pop) < self.size:
                     new_pop.append(Individual(representation=offspring2))
 
-            if elitism == True:
+            if elitism:
                 if self.optim == "max":
                     least = min(new_pop, key=attrgetter("fitness"))
                 elif self.optim == "min":
