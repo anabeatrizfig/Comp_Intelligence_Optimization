@@ -1,8 +1,10 @@
 from charles.charles import Population, Individual
 from charles.search import hill_climb, sim_annealing
-from data.tsp_data import distance_matrix
+# from data.tsp_data import distance_matrix
+from data.tsp_data_2 import distance_matrix
+# from data.tsp_data_3 import distance_matrix
 from copy import deepcopy
-from charles.selection import fps, tournament
+from charles.selection import fps, tournament, rank
 from charles.mutation import swap_mutation, inversion_mutation
 from charles.crossover import cycle_co, pmx_co
 import pandas as pd
@@ -64,10 +66,10 @@ Individual.get_neighbours = get_neighbours
 # )
 
 # TODO - create a list of total generations to test
-gens = [100]
+gens = [500]
 # TODO add ranking selection to the list | create minimization for fps
-selections = [tournament]
-crossovers = [cycle_co, pmx_co]
+selections = [fps, tournament, rank]
+crossovers = [pmx_co, cycle_co]
 mutations = [inversion_mutation, swap_mutation]
 co_ps = [0.9]
 mu_ps = [0.1]
@@ -114,5 +116,6 @@ def evaluate(settings, runs=30, path='output/test50.csv'):
     return plt.show()  # len(df_final) # settings, list_gen, list_fitness
 
 
-evaluate(settings=comb_settings, runs=50)
+evaluate(settings=comb_settings, runs=30)
+
 

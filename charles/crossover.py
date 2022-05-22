@@ -57,7 +57,7 @@ def cycle_co(p1, p2):
     return offspring1, offspring2
 
 
-def pmx_co(p1, p2):
+def pmx_co_old(p1, p2):
     """Implementation of partially matched/mapped crossover.
 
     Args:
@@ -96,6 +96,43 @@ def pmx_co(p1, p2):
     # repeat the procedure for each offspring
     o1 = pmx(o1, p1)
     o2 = pmx(o2, p2)
+    return o1, o2
+
+
+def pmx_co(p1, p2):
+    """Implementation of partially matched/mapped crossover.
+
+    Args:
+        p1 (Individual): First parent for crossover.
+        p2 (Individual): Second parent for crossover.
+
+    Returns:
+        Individuals: Two offspring, resulting from the crossover.
+    """
+    co_points = sample(range(len(p1)), 2)
+    co_points.sort()
+
+    def PMX(x, y):
+        o = [None] * len(x)
+
+        o[co_points[0]:co_points[1]] = x[co_points[0]:co_points[1]]
+
+        z = set(y[co_points[0]:co_points[1]]) - set(x[co_points[0]:co_points[1]])
+
+        for i in z:
+            temp = i
+            index = y.index(x[y.index(temp)])
+            while o[index] is not None:
+                temp = index
+                index = y.index(x[temp])
+            o[index] = i
+
+        while None in o:
+            index = o.index(None)
+            o[index] = y[index]
+        return o
+
+    o1, o2 = PMX(p1, p2), PMX(p2, p1)
     return o1, o2
 
 

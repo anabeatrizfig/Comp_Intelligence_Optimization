@@ -8,7 +8,7 @@ class Individual:
         self,
         representation=None,
         size=None,
-        replacement=True,
+        replacement=None,
         valid_set=None,
     ):
         if representation is None:
