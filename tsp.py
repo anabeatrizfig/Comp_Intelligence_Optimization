@@ -73,16 +73,19 @@ crossovers = [pmx_co, cycle_co]
 mutations = [inversion_mutation, swap_mutation]
 co_ps = [0.9]
 mu_ps = [0.1]
+elitism = [True, False]
 
 # combination of all possible settings to the tsp problem
-comb_settings = np.array(np.meshgrid(gens, selections, crossovers, mutations, co_ps, mu_ps)).T.reshape(-1, 6)
+comb_settings = np.array(np.meshgrid(gens, selections, crossovers, mutations, co_ps, mu_ps, elitism)).T.reshape(-1, 7)
 
 
 def evaluate(settings, runs=30, path='output/test50.csv'):
     df_final = pd.DataFrame(columns=['run', 'settings', 'generation', 'fitness'])
     for run in range(1, runs + 1):
         for setting in settings:
-            comb_set = f"gens: {setting[0]}; select: {str(setting[1]).split()[1]}; crossover: {str(setting[2]).split()[1]}; mutate: {str(setting[3]).split()[1]}; co_p: {setting[4]}; mu_p: {setting[5]}"
+            comb_set = f"gens: {setting[0]}; select: {str(setting[1]).split()[1]}; \
+                        crossover: {str(setting[2]).split()[1]}; mutate: {str(setting[3]).split()[1]}; \
+                        co_p: {setting[4]}; mu_p: {setting[5]}; elitism: {setting[6]}"
             pop = Population(
                 size=20,
                 sol_size=len(distance_matrix[0]),
@@ -97,7 +100,7 @@ def evaluate(settings, runs=30, path='output/test50.csv'):
                                                 mutate=setting[3],
                                                 co_p=setting[4],
                                                 mu_p=setting[5],
-                                                elitism=True
+                                                elitism=setting[6]
             )
             df = pd.DataFrame()
             df['generation'] = list_gen
