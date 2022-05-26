@@ -80,7 +80,7 @@ elitism = [True, False]
 comb_settings = np.array(np.meshgrid(gens, selections, crossovers, mutations, co_ps, mu_ps, elitism)).T.reshape(-1, 7)
 
 
-def evaluate(settings, runs=30, path='output/test50.csv'):
+def evaluate(settings, runs=50, path='output/test50.csv'):
     df_final = pd.DataFrame(columns=['run', 'gens', 'select', 'crossover', 'mutate', \
                                      'co_p', 'mu_p', 'elitism', 'generation', 'fitness', 'time'])
     for run in range(1, runs + 1):
@@ -106,6 +106,8 @@ def evaluate(settings, runs=30, path='output/test50.csv'):
                                                 elitism=setting[6]
             )
             df = pd.DataFrame()
+            df['generation'] = list_gen
+            df['fitness'] = list_fitness
             df['run'] = run
             df['gens'] = setting[0]
             df['select'] = str(setting[1]).split()[1]
@@ -114,17 +116,16 @@ def evaluate(settings, runs=30, path='output/test50.csv'):
             df['co_p']=setting[4]
             df['mu_p'] = setting[5]
             df['elitism'] = setting[6]
-            df['generation'] = list_gen
-            df['fitness'] = list_fitness
             df['time'] = time.time() - start
             df = df[['run', 'gens', 'select', 'crossover', 'mutate', 'co_p', 'mu_p', 'elitism', 'generation', 'fitness', 'time']]
+            #df_final = pd.concat([df_final, df])
             df_final = df_final.append(df)
 
     df_final.to_csv(path, sep=';', index=False)
 
-    return print('Done')  # len(df_final) # settings, list_gen, list_fitness
+    return print('Done - ' + str(df_final['time'].sum())) 
 
-evaluate(settings=comb_settings, runs=30)
+evaluate(settings=comb_settings, runs=50)
 
 
 # plot all combinations
