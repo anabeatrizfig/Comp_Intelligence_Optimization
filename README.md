@@ -18,10 +18,10 @@ ___
 ### Code organization:
 - [tsp.py](https://github.com/anabeatrizfig/Comp_Intelligence_Optimization/blob/main/tsp.py): file that runs the genetic algorithm for the TSP problem using combination of selected setting
 - [charles](https://github.com/anabeatrizfig/Comp_Intelligence_Optimization/tree/main/charles): folder that contains all the codes for the Genetic Algorithm 
-- [charles.py](https://github.com/anabeatrizfig/Comp_Intelligence_Optimization/blob/main/charles/charles.py): definitions of the Individual and Population classes
-- [crossover.py](https://github.com/anabeatrizfig/Comp_Intelligence_Optimization/blob/main/charles/crossover.py): functions for the crossover implementations
-- [mutation.py](https://github.com/anabeatrizfig/Comp_Intelligence_Optimization/blob/main/charles/mutation.py): functions for the mutation implementations
-- [selection.py](https://github.com/anabeatrizfig/Comp_Intelligence_Optimization/blob/main/charles/selection.py): functions for the selection implementations
+  - [charles.py](https://github.com/anabeatrizfig/Comp_Intelligence_Optimization/blob/main/charles/charles.py): definitions of the Individual and Population classes
+  - [crossover.py](https://github.com/anabeatrizfig/Comp_Intelligence_Optimization/blob/main/charles/crossover.py): functions for the crossover implementations
+  - [mutation.py](https://github.com/anabeatrizfig/Comp_Intelligence_Optimization/blob/main/charles/mutation.py): functions for the mutation implementations
+  - [selection.py](https://github.com/anabeatrizfig/Comp_Intelligence_Optimization/blob/main/charles/selection.py): functions for the selection implementations
 - [data](https://github.com/anabeatrizfig/Comp_Intelligence_Optimization/tree/main/data): distances matrix used for implementing TSP problems:
   - tsp_data.py: distance matrix of 13 cities
   - tsp_data_2.py: distance matrix of 29 cities
