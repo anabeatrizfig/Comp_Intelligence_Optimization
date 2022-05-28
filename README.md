@@ -12,8 +12,9 @@ Genetic Algorithm applied to the TSP problem.<br>
 - Mutation:
   - swap_mutation
   - inversion_mutation
-<br>
+
 ___
+
 ### Code organization:
 - [tsp.py](https://github.com/anabeatrizfig/Comp_Intelligence_Optimization/blob/main/tsp.py): file that runs the genetic algorithm for the TSP problem using combination of selected setting
 - [charles](https://github.com/anabeatrizfig/Comp_Intelligence_Optimization/tree/main/charles): folder that contains all the codes for the Genetic Algorithm 
