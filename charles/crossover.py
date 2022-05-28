@@ -57,48 +57,6 @@ def cycle_co(p1, p2):
     return offspring1, offspring2
 
 
-def pmx_co_old(p1, p2):
-    """Implementation of partially matched/mapped crossover.
-
-    Args:
-        p1 (Individual): First parent for crossover.
-        p2 (Individual): Second parent for crossover.
-
-    Returns:
-        Individuals: Two offspring, resulting from the crossover.
-    """
-    co_points = sample(range(len(p1)), 2)
-    co_points.sort()
-
-    # dictionary creation using the segment elements from both parents
-    # the dictionary will be working two ways
-    keys = p1[co_points[0]:co_points[1]] + p2[co_points[0]:co_points[1]]
-    values = p2[co_points[0]:co_points[1]] + p1[co_points[0]:co_points[1]]
-    # segment dictionary
-    segment = {keys[i]: values[i] for i in range(len(keys))}
-
-    # empty offsprings
-    o1 = [None] * len(p1)
-    o2 = [None] * len(p2)
-
-    # where pmx happens
-    def pmx(o, p):
-        for i, element in enumerate(p):
-            # if element not in the segment, copy
-            if element not in segment:
-                o[i] = p[i]
-            # if element in the segment, take the value of the key from
-            # segment/dictionary
-            else:
-                o[i] = segment.get(element)
-        return o
-
-    # repeat the procedure for each offspring
-    o1 = pmx(o1, p1)
-    o2 = pmx(o2, p2)
-    return o1, o2
-
-
 def pmx_co(p1, p2):
     """Implementation of partially matched/mapped crossover.
 
