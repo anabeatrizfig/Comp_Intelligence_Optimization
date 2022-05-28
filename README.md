@@ -5,7 +5,7 @@ Genetic Algorithm applied to the TSP problem.<br>
 - Selection:
   - tournament
   - rank
-  - fps (fitness proportionate selection)
+  - fps (fitness proportionate selection or roulette wheel selection)
 - Crossover:
   - cycle_co (cycle crossover)
   - pmx_co (partially matched crossover)
