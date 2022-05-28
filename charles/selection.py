@@ -25,7 +25,7 @@ def fps(population):
                 return individual
 
     elif population.optim == "min":
-        # Sum total fitness
+        # Sum total of the inverse of fitness
         total_fitness = sum([(1/i.fitness) for i in population])
         # Get a 'position' on the wheel
         spin = uniform(0, total_fitness)
@@ -48,29 +48,28 @@ def tournament(population, size=10):
         size (int): Size of the tournament.
 
     Returns:
-        Individual: Best individual in the tournament.
+        Individual: The best individual in the tournament.
     """
 
     # Select individuals based on tournament size
-    tournament = [choice(population.individuals) for i in range(size)]
+    sel_tournament = [choice(population.individuals) for i in range(size)]
     # Check if the problem is max or min
     if population.optim == 'max':
-        return max(tournament, key=attrgetter("fitness"))
+        return max(sel_tournament, key=attrgetter("fitness"))
     elif population.optim == 'min':
-        return min(tournament, key=attrgetter("fitness"))
+        return min(sel_tournament, key=attrgetter("fitness"))
     else:
         raise Exception("No optimization specified (min or max).")
 
 
-def rank(population, size=10):
+def rank(population):
     """Ranking selection implementation.
 
     Args:
         population (Population): The population we want to select from.
-        size (int): Size of the tournament.
 
     Returns:
-        Individual: Best individual in the tournament.
+        Individual: The best individual for the ranking selection.
     """
     # Rank individuals based on optim approach
     if population.optim == 'max':
