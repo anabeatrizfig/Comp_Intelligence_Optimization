@@ -28,4 +28,3 @@ ___
   - tsp_data_29.py: distance matrix of 29 cities
   - tsp_data_561.py: distance matrix of 561 cities
 - [Analysis_TSP.ipynb](https://github.com/anabeatrizfig/Comp_Intelligence_Optimization/blob/main/Analysis_TSP.ipynb): Jupyter Notebook with the plots of the Genetic Algorithms processes
-- the other folder are from old implementations, and it is not used for the TSP problem
