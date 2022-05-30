@@ -1,7 +1,8 @@
 from charles.charles import Population, Individual
 # from data.tsp_data import distance_matrix
-from data.tsp_data_2 import distance_matrix
-# from data.tsp_data_3 import distance_matrix
+from data.tsp_data_16 import distance_matrix
+# from data.tsp_data_29 import distance_matrix
+# from data.tsp_data_561 import distance_matrix
 from copy import deepcopy
 from charles.selection import fps, tournament, rank
 from charles.mutation import swap_mutation, inversion_mutation
@@ -45,10 +46,10 @@ Individual.get_fitness = get_fitness
 Individual.get_neighbours = get_neighbours
 
 # select the combination of settings to run
-gens = [500]
-selections = [tournament]  # fps, rank]
-crossovers = [pmx_co]  # , cycle_co]
-mutations = [inversion_mutation]  # , swap_mutation]
+gens = [200]
+selections = [fps, tournament, rank]
+crossovers = [pmx_co, cycle_co]
+mutations = [inversion_mutation, swap_mutation]
 co_ps = [0.9]  # , 0.8]
 mu_ps = [0.1]  # , 0.2]
 elitism = [True]  # , False]
@@ -124,5 +125,5 @@ def evaluate(settings, runs=50, path='output/test50.csv'):
     return print('Done - ' + str(round(df_final['time'].sum(), 2)) + 'ms', f'{comb_set}')
 
 
-folder = 'output/test50.csv'
+folder = 'output/test561.csv'
 evaluate(settings=comb_settings, runs=50, path=folder)
